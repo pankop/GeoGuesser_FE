@@ -21,14 +21,17 @@ export default function ImageUpload() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!image) return;
+    if (!image) {
+      setNotification({ message: "No image selected", type: "error" });
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", image);
 
     const response = await fetch("/api/upload", {
       method: "POST",
-      body: formData,
+      body: JSON.stringify({ file: formData.get("file") }),
     });
 
     if (response.ok) {
