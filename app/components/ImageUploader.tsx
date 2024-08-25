@@ -29,7 +29,7 @@ export default function ImageUpload() {
     const formData = new FormData();
     formData.append("file", image);
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_MODEL_URL}`, {
+    const response = await fetch(`https://c241-ps372.et.r.appspot.com/predict`, {
       method: "POST",
       body: JSON.stringify({ file: formData.get("file") }),
     });
