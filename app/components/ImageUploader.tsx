@@ -29,7 +29,7 @@ export default function ImageUpload() {
     const formData = new FormData();
     formData.append("file", image);
 
-    const response = await fetch("/api/upload", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_MODEL_URL}`, {
       method: "POST",
       body: JSON.stringify({ file: formData.get("file") }),
     });
@@ -39,8 +39,10 @@ export default function ImageUpload() {
         message: "Image uploaded successfully",
         type: "success",
       });
+      console.log(response);
     } else {
       setNotification({ message: "Failed to upload image", type: "error" });
+      console.log(response);
     }
   };
 
