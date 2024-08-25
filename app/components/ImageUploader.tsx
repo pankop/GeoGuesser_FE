@@ -39,8 +39,10 @@ export default function ImageUpload() {
         message: "Image uploaded successfully",
         type: "success",
       });
+      console.log(response);
     } else {
       setNotification({ message: "Failed to upload image", type: "error" });
+      console.log(response);
     }
   };
 
